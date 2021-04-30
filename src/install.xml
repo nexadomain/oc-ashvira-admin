@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<name>Ashvira UI Dashboard</name>
+	<code>ashvirauidashboard</code>
+	<version>0.0.1</version>
+	<author>Nexa Domain</author>
+	<description>Change the boring Administrative Panel into Modern, Slim and Fast Dashboard</description>
+	<link>https://demo.jhom.co/oc-ashvira-ui-dashboard</link>
+	<file path="admin/controller/common/login.php">
+		<operation>
+			<search>
+				<![CDATA[
+		$data['header'] = $this->load->controller('common/header');
+				]]>
+			</search>
+			<add position="replace">
+				<![CDATA[
+		$data['header'] = $this->load->controller('common/loginheader_ashvira');
+				]]>
+			</add>
+		</operation>
+		<operation>
+			<search>
+				<![CDATA[
+		$this->response->setOutput($this->load->view('common/login', $data));
+				]]>
+			</search>
+			<add position="replace">
+				<![CDATA[
+		$this->response->setOutput($this->load->view('common/login_ashvira', $data));
+				]]>
+			</add>
+		</operation>
+	</file>
+	<file path="admin/controller/common/forgotten.php">
+		<operation>
+			<search>
+				<![CDATA[
+		$data['header'] = $this->load->controller('common/header');
+				]]>
+			</search>
+			<add position="replace">
+				<![CDATA[
+		$data['header'] = $this->load->controller('common/loginheader_ashvira');
+				]]>
+			</add>
+		</operation>
+		<operation>
+			<search>
+				<![CDATA[
+		$this->response->setOutput($this->load->view('common/forgotten', $data));
+				]]>
+			</search>
+			<add position="replace">
+				<![CDATA[
+		$this->response->setOutput($this->load->view('common/forgotten_ashvira', $data));
+				]]>
+			</add>
+		</operation>
+	</file>
+</modification>
