@@ -42,8 +42,8 @@ This will rebuild the cache and *Disable the directory* extension will start wor
 Now, move to *Part B*
 
 ### Part B - Installation of _Ashvira UI Dashboard_
-##### Step 1: Download the theme - *[Ashvira UI Dashboard](https://www.opencart.com/index.php?route=marketplace/extension/info&extension_id=35633)*
-Download the theme - *Ashvira UI Dashboard* from [Opencart Marketplace](https://www.opencart.com/index.php?route=marketplace/extension/info&extension_id=35633) or [Github](https://github.com/nexadomain/oc-ashvira-admin).
+##### Step 1: Download the theme - *[Ashvira UI Dashboard](https://www.opencart.com/index.php?route=marketplace/extension/info&extension_id=41905)*
+Download the theme - *Ashvira UI Dashboard* from [Opencart Marketplace](https://www.opencart.com/index.php?route=marketplace/extension/info&extension_id=41905) or [Github](https://github.com/nexadomain/oc-ashvira-admin).
 
 Extract the downloaded files.
 
