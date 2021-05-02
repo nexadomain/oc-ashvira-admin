@@ -75,6 +75,6 @@ In this *Modification*, you will find all extension that are installed in Openca
 Click **Refresh** button at right-top area. 
 This will rebuild the cache and *Disable the directory* extension will start working.
 
-#### Hurray!!! New Theme successfully installed at your Opencart Website.
+#### Hurray!!! New Theme successfully installed and activated at your Opencart Website.
 
 *This project is still in development mode. We will more bring more feature with upcoming upgrades.*
