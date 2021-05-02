@@ -22,6 +22,10 @@ Ashvira UI Dashboard is easy to install, light-weighted, faster, clean & elegant
 This theme can be easily installed using OCMOD. 
 Find Installation steps in [INSTALL.md](https://github.com/nexadomain/oc-ashvira-admin/edit/main/INSTALL.md)
 
+#### UnInstallation
+Installation of this theme is easy, **Uninstallation** too!
+Find UnInstallation steps in [UNINSTALL.md](https://github.com/nexadomain/oc-ashvira-admin/edit/main/UNINSTALL.md)
+
 
 #### Support
 Our support team respond you within 24 working Hours. You can send us email On nexadomain@gmail.com . We will try to respond you as early as possible.
