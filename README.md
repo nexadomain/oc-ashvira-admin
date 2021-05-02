@@ -18,18 +18,26 @@ Ashvira UI Dashboard is easy to install, light-weighted, faster, clean & elegant
 * Forgotten Password (Admin)
 * other pages coming in upcoming version
 
+#### Dowanload
+Download this theme either from **[Github](https://github.com/nexadomain/oc-ashvira-admin)** or **[Opencart Marketplace](https://www.opencart.com/index.php?route=marketplace/extension/info&extension_id=41905)**
+
 #### Installation
 This theme can be easily installed using OCMOD. 
-Find Installation steps in [INSTALL.md](https://github.com/nexadomain/oc-ashvira-admin/edit/main/INSTALL.md)
+Find Installation steps in [INSTALL.md](https://github.com/nexadomain/oc-ashvira-admin/blob/main/INSTALL.md)
 
 #### UnInstallation
 Installation of this theme is easy, **Uninstallation** too!
-Find UnInstallation steps in [UNINSTALL.md](https://github.com/nexadomain/oc-ashvira-admin/edit/main/UNINSTALL.md)
+Find Uninstallation steps in [UNINSTALL.md](https://github.com/nexadomain/oc-ashvira-admin/blob/main/UNINSTALL.md)
 
 
 #### Support
-Our support team respond you within 24 working Hours. You can send us email On nexadomain@gmail.com . We will try to respond you as early as possible.
+Our support team respond you within 24 working Hours. You can send us email at nexadomain@gmail.com . We will try to respond you as early as possible.
+
+#### Suggestion & Review
+We need reviews and suggestions constantly to improve our products and ourself. You can send us suggestions & review at nexadomain@gmail.com .  
+We will try to respond as early as possible.
 
 #### Note
-Currently, this Theme is in Development Mode. We are building great Administrative Panel for Opencart, this will take some time.
+Currently, this Theme is in *Development Mode*.  
+We are building great Administrative Panel for Opencart, this will take some time.  
 With each new version, we are adding new features.
