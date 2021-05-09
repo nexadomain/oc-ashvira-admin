@@ -1,5 +1,5 @@
 # OpenCart Ashvira UI Dashboard Theme
-_(Comparatible with **Opencart** version above **3.0.0.0**)_
+_**Note:** Comparatible with **Opencart** version above **3.0.0.0**_
 
 Administrative Theme for Opencart Framework based on Bootstrap 5
 
@@ -28,7 +28,7 @@ Download this theme, either from **[Github](https://github.com/nexadomain/oc-ash
 This theme can be easily installed using OCMOD.  
 Find Installation steps in [INSTALL.md](https://github.com/nexadomain/oc-ashvira-admin/blob/main/INSTALL.md)
 
-#### UnInstallation
+#### Uninstallation
 Installation of this theme is easy, **Uninstallation** too!  
 Find Uninstallation steps in [UNINSTALL.md](https://github.com/nexadomain/oc-ashvira-admin/blob/main/UNINSTALL.md)
 
