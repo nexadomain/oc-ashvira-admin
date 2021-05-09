@@ -1,4 +1,5 @@
 # OpenCart Ashvira UI Dashboard Theme
+_(Comparatible with **Opencart** version above **3.0.0.0**)_
 Administrative Theme for Opencart Framework based on Bootstrap 5
 
 Tired of Boring Default Opencart Admin Panel, switch to Ashvira UI Dashboard theme.  
@@ -6,6 +7,7 @@ Ashvira UI Dashboard is easy to install, light-weighted, faster, clean & elegant
 
 #### CORE FEATURES
 * Bootstrap 5
+* Template Engine - **TWIG**
 * No Core Files are Overriden
 * OCMOD Installation
 * Cross Browser Compatibility
@@ -18,7 +20,7 @@ Ashvira UI Dashboard is easy to install, light-weighted, faster, clean & elegant
 * Forgotten Password (Admin)
 * other pages coming in upcoming version
 
-#### Dowanload
+#### Download
 Download this theme, either from **[Github](https://github.com/nexadomain/oc-ashvira-admin)** or **[Opencart Marketplace](https://www.opencart.com/index.php?route=marketplace/extension/info&extension_id=41905)**
 
 #### Installation
