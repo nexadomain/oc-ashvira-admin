@@ -16,9 +16,10 @@ Ashvira UI Dashboard is easy to install, light-weighted, faster, clean & elegant
 * Mobile Friendly
 * Installation Documentation With Screenshots
 
-#### Pages Included
-* Login (Admin)
-* Forgotten Password (Admin)
+#### Pages Included (Admin)
+* [Login](https://demos.jhom.co/oc-ashvira-ui-dashboard/common/login.html?utm_source=Github-Readme&utm_medium=Documentation)
+* [Forgotten Password](https://demos.jhom.co/oc-ashvira-ui-dashboard/common/forgotten.html?utm_source=Github-Readme&utm_medium=Documentation)
+* [Reset Password](https://demos.jhom.co/oc-ashvira-ui-dashboard/common/reset.html?utm_source=Github-Readme&utm_medium=Documentation)
 * other pages coming in upcoming version
 
 #### Download
