@@ -1,0 +1,28 @@
+{{ header }}{{ column_left }}{{ navbar }}
+
+{% if error_install %}
+<div class="alert alert-danger text-light alert-dismissible fade show" role="alert">
+  <span class="alert-icon"><i class="fa fa-exclamation-circle"></i></span>
+  <span class="alert-text">{{ error_install }}</span>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endif %}
+
+{% for row in rows %}
+<div class="row {% if not loop.first %}mt-4{% endif %} {% if not loop.last %}mb-4{% endif %}">
+  {% for dashboard_1 in row %}
+    {% set class = 'col-lg-%s %s'|format(dashboard_1.width, 'col-sm-6 mb-lg-0 mb-4') %}
+    {% for dashboard_2 in row %}
+      {% if dashboard_2.width > 3 %}
+        {% set class = 'col-lg-%s %s'|format(dashboard_1.width, 'col-sm-12 mb-lg-0 mb-4') %}
+      {% endif %}
+    {% endfor %}
+    <div class="{{ class }}">{{ dashboard_1.output }}</div>
+  {% endfor %}
+</div>
+{% endfor %}
+
+{{ security }}
+{{ footer }}

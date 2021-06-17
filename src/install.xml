@@ -5,22 +5,54 @@
 	<version>0.0.1</version>
 	<author>Nexa Domain</author>
 	<description>Change the boring Administrative Panel into Modern, Slim and Fast Dashboard</description>
-	<link>https://demo.jhom.co/oc-ashvira-ui-dashboard</link>
+	<link>https://demos.jhom.co/oc-ashvira-ui-dashboard</link>
+
+	<!-- Footer Language (language/common/footer) -->
+	<file path="admin/language/*/common/footer.php">
+		<operation>
+			<search trim="true">
+				<![CDATA[
+		$_['text_footer']  = '<a href="http://www.opencart.com">OpenCart</a> &copy; 2009-' . date('Y') . ' All Rights Reserved.';
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+		$_['text_footer']  = '&copy; ' . date('Y') . ', Theme made with <i class="fa fa-heart"></i> by <a href="https://jhom.co#about" class="font-weight-bold" target="_blank">Nexa Domain</a> for <a href="http://www.opencart.com">OpenCart</a>';
+		$_['link_footer_ashvira'] = [
+    [
+        'href'       => "https://github.com/nexadomain/oc-ashvira-admin/blob/main/README.md",
+        'text'     => "Documentation"
+    ],
+    [
+        'href'       => "https://www.opencart.com/index.php?route=marketplace/extension/info&extension_id=41905",
+        'text'     => "Marketplace"
+    ],
+    [
+        'href'       => "#",
+        'text'     => "Upgrade to Pro"
+    ]
+];
+				]]>
+			</add>
+		</operation>
+	</file>
+
+	<!-- Login Controller (controller/common/login) -->
 	<file path="admin/controller/common/login.php">
 		<operation>
-			<search>
+			<search trim="true">
 				<![CDATA[
 		$data['header'] = $this->load->controller('common/header');
 				]]>
 			</search>
 			<add position="replace">
 				<![CDATA[
-		$data['header'] = $this->load->controller('common/loginheader_ashvira');
+		$data['header'] = $this->load->controller('common/header_ashvira');
 				]]>
 			</add>
 		</operation>
 		<operation>
-			<search>
+			<search trim="true">
 				<![CDATA[
 		$this->response->setOutput($this->load->view('common/login', $data));
 				]]>
@@ -32,21 +64,23 @@
 			</add>
 		</operation>
 	</file>
+
+	<!-- Forget Password Controller (controller/common/forgotton) -->
 	<file path="admin/controller/common/forgotten.php">
 		<operation>
-			<search>
+			<search trim="true">
 				<![CDATA[
 		$data['header'] = $this->load->controller('common/header');
 				]]>
 			</search>
 			<add position="replace">
 				<![CDATA[
-		$data['header'] = $this->load->controller('common/loginheader_ashvira');
+		$data['header'] = $this->load->controller('common/header_ashvira');
 				]]>
 			</add>
 		</operation>
 		<operation>
-			<search>
+			<search trim="true">
 				<![CDATA[
 		$this->response->setOutput($this->load->view('common/forgotten', $data));
 				]]>
@@ -54,6 +88,540 @@
 			<add position="replace">
 				<![CDATA[
 		$this->response->setOutput($this->load->view('common/forgotten_ashvira', $data));
+				]]>
+			</add>
+		</operation>
+	</file>
+
+	<!-- Reset Password Controller (controller/common/reset) -->
+	<file path="admin/controller/common/reset.php">
+		<operation>
+			<search trim="true">
+				<![CDATA[
+		$data['header'] = $this->load->controller('common/header');
+				]]>
+			</search>
+			<add position="replace">
+				<![CDATA[
+		$data['header'] = $this->load->controller('common/header_ashvira');
+				]]>
+			</add>
+		</operation>
+		<operation>
+			<search trim="true">
+				<![CDATA[
+		$this->response->setOutput($this->load->view('common/reset', $data));
+				]]>
+			</search>
+			<add position="replace">
+				<![CDATA[
+		$this->response->setOutput($this->load->view('common/reset_ashvira', $data));
+				]]>
+			</add>
+		</operation>
+	</file>
+
+	<!-- Dashboard Controller (controller/common/dashboard) -->
+	<file path="admin/controller/common/dashboard.php">
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					$data['header'] = $this->load->controller('common/header');
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					$data['header'] = $this->load->controller('common/header_ashvira');
+				]]>
+			</add>
+		</operation>
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					$data['column_left'] = $this->load->controller('common/column_left');
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					$data['column_left'] = $this->load->controller('common/column_left_ashvira');
+		$data['navbar'] = $this->load->controller('common/navbar_ashvira', $data);
+				]]>
+			</add>
+		</operation>
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					$data['footer'] = $this->load->controller('common/footer');
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					$data['footer'] = $this->load->controller('common/footer_ashvira');
+				]]>
+			</add>
+		</operation>
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					$this->response->setOutput($this->load->view('common/dashboard', $data));
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					$this->response->setOutput($this->load->view('common/dashboard_ashvira', $data));
+				]]>
+			</add>
+		</operation>
+	</file>
+
+	<!-- Profile Controller (controller/common/profile) -->
+	<file path="admin/controller/common/profile.php">
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					$data['header'] = $this->load->controller('common/header');
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					$data['header'] = $this->load->controller('common/header_ashvira');
+				]]>
+			</add>
+		</operation>
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					$data['column_left'] = $this->load->controller('common/column_left');
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					$data['column_left'] = $this->load->controller('common/column_left_ashvira');
+		$data['navbar'] = $this->load->controller('common/navbar_ashvira', $data);
+				]]>
+			</add>
+		</operation>
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					$data['footer'] = $this->load->controller('common/footer');
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					$data['footer'] = $this->load->controller('common/footer_ashvira');
+				]]>
+			</add>
+		</operation>
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					$this->response->setOutput($this->load->view('common/profile', $data));
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					$this->response->setOutput($this->load->view('common/profile_ashvira', $data));
+				]]>
+			</add>
+		</operation>
+	</file>
+
+	<!-- Developer(Modal) Controller (controller/common/developer) -->
+	<file path="admin/controller/common/developer.php">
+		<operation>
+			<search trim="true">
+				<![CDATA[
+		$this->response->setOutput($this->load->view('common/developer', $data));
+				]]>
+			</search>
+			<add position="replace">
+				<![CDATA[
+		$this->response->setOutput($this->load->view('common/developer_ashvira', $data));
+				]]>
+			</add>
+		</operation>
+	</file>
+
+	<!-- Security(Modal) Controller (controller/common/security) -->
+	<file path="admin/controller/common/security.php">
+		<operation>
+			<search trim="true">
+				<![CDATA[
+		return $this->load->view('common/security', $data);
+				]]>
+			</search>
+			<add position="replace">
+				<![CDATA[
+		return $this->load->view('common/security_ashvira', $data);
+				]]>
+			</add>
+		</operation>
+	</file>
+
+	<!-- Dashboard(EXT) - Activity Controller (controller/extension/dashboard/activity) -->
+	<file path="admin/controller/extension/dashboard/activity.php">
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					$comment = vsprintf($this->language->get('text_activity_' . $result['key']), json_decode($result['data'], true));
+				]]>
+			</search>
+			<add position="after" trim="true">
+				<![CDATA[
+					$ash_icon = vsprintf($this->language->get('ash_icon_activity_' . $result['key']), json_decode($result['data'], true));
+				]]>
+			</add>
+		</operation>
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					$data['activities'][] = array(
+				]]>
+			</search>
+			<add position="after" trim="true">
+				<![CDATA[
+					'ash_noti_icon'    => $ash_icon,
+				]]>
+			</add>
+		</operation>
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					return $this->load->view('extension/dashboard/activity_info', $data);
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					return $this->load->view('extension/dashboard/activity_info_ashvira', $data);
+				]]>
+			</add>
+		</operation>
+	</file>
+
+	<!-- Dashboard(EXT) - Activity Language (language/*/extension/dashboard/activity) -->
+	<file path="admin/language/*/extension/dashboard/activity.php">
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					// Text
+				]]>
+			</search>
+			<add position="after" trim="true">
+				<![CDATA[
+					// Icon for Ashvira UI Dashboard
+$_['ash_icon_activity_register'] = '<i class="fas fa-user-plus text-info text-gradient" data-bs-toggle="tooltip" data-bs-placement="top" title="New Customer" data-container="body" data-animation="true"></i>';
+$_['ash_icon_activity_edit'] = '<i class="fas fa-user-edit text-secondary text-gradient" data-bs-toggle="tooltip" data-bs-placement="top" title="Profile Edit" data-container="body" data-animation="true"></i>';
+$_['ash_icon_activity_password'] = '<i class="fas fa-lock text-warning text-gradient" data-bs-toggle="tooltip" data-bs-placement="top" title="Password Changed" data-container="body" data-animation="true"></i>';
+$_['ash_icon_activity_reset'] = '<i class="fas fa-user-cog text-primary text-gradient" data-bs-toggle="tooltip" data-bs-placement="top" title="Password Reset" data-container="body" data-animation="true"></i>';
+$_['ash_icon_activity_login'] = '<i class="fas fa-user-shield text-info text-gradient" data-bs-toggle="tooltip" data-bs-placement="top" title="Login" data-container="body" data-animation="true"></i>';
+$_['ash_icon_activity_forgotten'] = '<i class="fas fa-user-injured text-danger text-gradient" data-bs-toggle="tooltip" data-bs-placement="top" title="Password Forgot" data-container="body" data-animation="true"></i>';
+$_['ash_icon_activity_address_add'] = '<i class="fas fa-house-user text-info text-gradient" data-bs-toggle="tooltip" data-bs-placement="top" title="Address Added" data-container="body" data-animation="true"></i>';
+$_['ash_icon_activity_address_edit'] = '<i class="fas fa-home text-primary text-gradient" data-bs-toggle="tooltip" data-bs-placement="top" title="Address Edit" data-container="body" data-animation="true"></i>';
+$_['ash_icon_activity_address_delete'] = '<i class="fas fa-house-damage text-warning text-gradient" data-bs-toggle="tooltip" data-bs-placement="top" title="Address Delete" data-container="body" data-animation="true"></i>';
+$_['ash_icon_activity_return_account'] = '<i class="fas fa-user-minus text-danger text-gradient" data-bs-toggle="tooltip" data-bs-placement="top" title="Customer Return" data-container="body" data-animation="true"></i>';
+$_['ash_icon_activity_return_guest'] = '<i class="fas fa-user-ninja text-danger text-gradient" data-bs-toggle="tooltip" data-bs-placement="top" title="Guest Return" data-container="body" data-animation="true"></i>';
+$_['ash_icon_activity_order_account'] = '<i class="fas fa-user-check text-success text-gradient" data-bs-toggle="tooltip" data-bs-placement="top" title="Customer Order" data-container="body" data-animation="true"></i>';
+$_['ash_icon_activity_order_guest'] = '<i class="fas fa-user-secret text-success text-gradient" data-bs-toggle="tooltip" data-bs-placement="top" title="Guest Order" data-container="body" data-animation="true"></i>';
+$_['ash_icon_activity_affiliate_add'] = '<i class="fas fa-users text-primary text-gradient" data-bs-toggle="tooltip" data-bs-placement="top" title="New Affiliate" data-container="body" data-animation="true"></i>';
+$_['ash_icon_activity_affiliate_edit'] = '<i class="fas fa-users-cog text-primary text-gradient" data-bs-toggle="tooltip" data-bs-placement="top" title="Affiliate Edit" data-container="body" data-animation="true"></i>';
+$_['ash_icon_activity_transaction'] = '<i class="ni ni-credit-card text-warning text-gradient" data-bs-toggle="tooltip" data-bs-placement="top" title="Transaction" data-container="body" data-animation="true"></i>';
+				]]>
+			</add>
+		</operation>
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					$data['activities'][] = array(
+				]]>
+			</search>
+			<add position="after" trim="true">
+				<![CDATA[
+					'ash_noti_icon'    => $ash_icon,
+				]]>
+			</add>
+		</operation>
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					return $this->load->view('extension/dashboard/activity_info', $data);
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					return $this->load->view('extension/dashboard/activity_info_ashvira', $data);
+				]]>
+			</add>
+		</operation>
+	</file>
+
+	<!-- Dashboard(EXT) - Chart Controller (controller/extension/dashboard/chart) -->
+	<file path="admin/controller/extension/dashboard/chart.php">
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					return $this->load->view('extension/dashboard/chart_info', $data);
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					return $this->load->view('extension/dashboard/chart_info_ashvira', $data);
+				]]>
+			</add>
+		</operation>
+	</file>
+
+	<!-- Dashboard(EXT) - Customer Controller (controller/extension/dashboard/customer) -->
+	<file path="admin/controller/extension/dashboard/customer.php">
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					return $this->load->view('extension/dashboard/customer_info', $data);
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					return $this->load->view('extension/dashboard/customer_info_ashvira', $data);
+				]]>
+			</add>
+		</operation>
+	</file>
+
+	<!-- Dashboard(EXT) - Map Controller (controller/extension/dashboard/map) -->
+	<file path="admin/controller/extension/dashboard/map.php">
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					return $this->load->view('extension/dashboard/map_info', $data);
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					return $this->load->view('extension/dashboard/map_info_ashvira', $data);
+				]]>
+			</add>
+		</operation>
+	</file>
+
+	<!-- Dashboard(EXT) - Online Controller (controller/extension/dashboard/online) -->
+	<file path="admin/controller/extension/dashboard/online.php">
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					return $this->load->view('extension/dashboard/online_info', $data);
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					return $this->load->view('extension/dashboard/online_info_ashvira', $data);
+				]]>
+			</add>
+		</operation>
+	</file>
+
+	<!-- Dashboard(EXT) - Order Controller (controller/extension/dashboard/order) -->
+	<file path="admin/controller/extension/dashboard/order.php">
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					return $this->load->view('extension/dashboard/order_info', $data);
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					return $this->load->view('extension/dashboard/order_info_ashvira', $data);
+				]]>
+			</add>
+		</operation>
+	</file>
+
+	<!-- Dashboard(EXT) - Recent Controller (controller/extension/dashboard/recent) -->
+	<file path="admin/controller/extension/dashboard/recent.php">
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					return $this->load->view('extension/dashboard/recent_info', $data);
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					return $this->load->view('extension/dashboard/recent_info_ashvira', $data);
+				]]>
+			</add>
+		</operation>
+	</file>
+
+	<!-- Dashboard(EXT) - Sale Controller (controller/extension/dashboard/sale) -->
+	<file path="admin/controller/extension/dashboard/sale.php">
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					return $this->load->view('extension/dashboard/sale_info', $data);
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					$data['total'] =  $this->currency->getSymbolLeft($this->config->get('config_currency')) . $data['total'];
+		return $this->load->view('extension/dashboard/sale_info_ashvira', $data);
+				]]>
+			</add>
+		</operation>
+	</file>
+
+	<!-- Error - Not Found Controller (controller/error/not_found) -->
+	<file path="admin/controller/error/not_found.php">
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					$data['header'] = $this->load->controller('common/header');
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					$data['header'] = $this->load->controller('common/header_ashvira');
+				]]>
+			</add>
+		</operation>
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					$data['column_left'] = $this->load->controller('common/column_left');
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					$data['column_left'] = $this->load->controller('common/column_left_ashvira');
+		$data['navbar'] = $this->load->controller('common/navbar_ashvira', $data);
+				]]>
+			</add>
+		</operation>
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					$data['footer'] = $this->load->controller('common/footer');
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					$data['footer'] = $this->load->controller('common/footer_ashvira');
+				]]>
+			</add>
+		</operation>
+		<operation>
+			<search trim="true">
+				<![CDATA[
+		$this->response->setOutput($this->load->view('error/not_found', $data));
+				]]>
+			</search>
+			<add position="replace">
+				<![CDATA[
+		$this->response->setOutput($this->load->view('error/not_found_ashvira', $data));
+				]]>
+			</add>
+		</operation>
+	</file>
+
+	<!-- Error - Permission Controller (controller/error/permission) -->
+	<file path="admin/controller/error/permission.php">
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					$data['header'] = $this->load->controller('common/header');
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					$data['header'] = $this->load->controller('common/header_ashvira');
+				]]>
+			</add>
+		</operation>
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					$data['column_left'] = $this->load->controller('common/column_left');
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					$data['column_left'] = $this->load->controller('common/column_left_ashvira');
+		$data['navbar'] = $this->load->controller('common/navbar_ashvira', $data);
+				]]>
+			</add>
+		</operation>
+		<operation>
+			<search trim="true">
+				<![CDATA[
+					$data['footer'] = $this->load->controller('common/footer');
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					$data['footer'] = $this->load->controller('common/footer_ashvira');
+				]]>
+			</add>
+		</operation>
+		<operation>
+			<search trim="true">
+				<![CDATA[
+		$this->response->setOutput($this->load->view('error/permission', $data));
+				]]>
+			</search>
+			<add position="replace">
+				<![CDATA[
+		$this->response->setOutput($this->load->view('error/permission_ashvira', $data));
+				]]>
+			</add>
+		</operation>
+	</file>
+
+	<!-- Setting Store Controller (controller/setting/store) -->
+	<file path="admin/controller/setting/store.php">
+		<operation>
+			<search trim="true" index="0">
+				<![CDATA[
+					$data['header'] = $this->load->controller('common/header');
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					$data['header'] = $this->load->controller('common/header_ashvira');
+				]]>
+			</add>
+		</operation>
+		<operation>
+			<search trim="true" index="0">
+				<![CDATA[
+					$data['column_left'] = $this->load->controller('common/column_left');
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					$data['column_left'] = $this->load->controller('common/column_left_ashvira');
+		$data['navbar'] = $this->load->controller('common/navbar_ashvira', $data);
+				]]>
+			</add>
+		</operation>
+		<operation>
+			<search trim="true" index="0">
+				<![CDATA[
+					$data['footer'] = $this->load->controller('common/footer');
+				]]>
+			</search>
+			<add position="replace" trim="true">
+				<![CDATA[
+					$data['footer'] = $this->load->controller('common/footer_ashvira');
+				]]>
+			</add>
+		</operation>
+		<operation>
+			<search trim="true">
+				<![CDATA[
+		$this->response->setOutput($this->load->view('setting/store_list', $data));
+				]]>
+			</search>
+			<add position="replace">
+				<![CDATA[
+		$this->response->setOutput($this->load->view('setting/store_list_ashvira', $data));
 				]]>
 			</add>
 		</operation>

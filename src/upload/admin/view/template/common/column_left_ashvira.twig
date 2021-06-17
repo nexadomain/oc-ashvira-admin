@@ -1,0 +1,151 @@
+<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-left ms-3 bg-white"
+  id="sidenav-main" data-color="info">
+  <div class="sidenav-header">
+    <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute right-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+    <a class="navbar-brand m-0" href="{{ home }}">
+      <img src="https://cdn.jsdelivr.net/gh/opencart/opencart@3.0.3.7/upload/image/no_image.png" class="navbar-brand-img h-100 w-15" alt="{{ heading_title }}">
+      <span class="ms-1 font-weight-bold">{{ heading_title }}</span>
+    </a>
+  </div>
+  <hr class="horizontal dark mt-0">
+  <div class="collapse navbar-collapse  w-auto" id="sidenav-collapse-main">
+    <ul class="navbar-nav" id="menu">	
+      {% set i = 0 %}
+      {% for menu in menus %}
+      <li class="nav-item" id="{{ menu.id }}">
+	    {% if menu.href %}
+        <a class="nav-link active" href="{{ menu.href }}">
+          <div
+            class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fa {{ menu.icon }}"></i>
+          </div>
+          <span class="nav-link-text ms-1">{{ menu.name }}</span>
+        </a>
+		  {% else %}
+        <a class="nav-link" data-bs-toggle="collapse" href="#collapse{{ i }}">
+          <div
+            class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fa {{ menu.icon }}"></i>
+          </div>
+          <span class="nav-link-text ms-1">
+            <span>{{ menu.name }}</span>
+          </span>
+        </a>
+		{% endif %}
+		{% if menu.children %}
+        <div class="collapse" id="collapse{{ i }}">
+          <ul class="nav">
+		    {% set j = 0 %}
+            {% for children_1 in menu.children %}
+              <li class="nav-item ">
+				{% if children_1.href %}
+				<a class="nav-link" href="{{ children_1.href }}">
+				  <span class="nav-link-text ms-1">{{ children_1.name }}</span>
+				</a>
+				{% else %}
+				<a class="nav-link" data-bs-toggle="collapse" href="#collapse{{ i }}-{{ j }}">
+				  <span class="nav-link-text ms-1">
+					<span>{{ children_1.name }}</span>
+				  </span>
+				</a>
+				{% endif %}
+				
+				{% if children_1.children %}
+				<div class="collapse" id="collapse{{ i }}-{{ j }}">
+				  <ul class="nav">
+					{% set k = 0 %}
+					{% for children_2 in children_1.children %}
+					<li class="nav-item ">
+					  {% if children_2.href %}
+					  <a class="nav-link" href="{{ children_2.href }}">
+						<span class="nav-link-text ms-1">{{ children_2.name }}</span>
+					  </a>
+					  {% else %}
+					  <a class="nav-link" data-bs-toggle="collapse" href="#collapse-{{ i }}-{{ j }}-{{ k }}">
+						<span class="nav-link-text ms-1">
+						  <span>{{ children_2.name }}</span>
+						</span>
+					  </a>
+					  {% endif %}
+					  
+					  {% if children_2.children %}
+					  <div class="collapse" id="collapse-{{ i }}-{{ j }}-{{ k }}">
+						  <ul class="nav">
+                            {% for children_3 in children_2.children %}
+							<li class="nav-item ">
+							  <a class="nav-link" href="{{ children_3.href }}">
+								<span class="nav-link-text ms-1">{{ children_3.name }}</span>
+							  </a>
+							</li>
+                            {% endfor %}
+						  </ul>
+					  </div>
+					  {% endif %}
+					</li>
+					{% set k = k + 1 %}
+					{% endfor %}
+				  </ul>
+				</div>
+				{% endif %}
+              </li>
+              {% set j = j + 1 %}
+            {% endfor %}
+          </ul>
+        </div>
+		{% endif %}
+      </li>
+      {% set i = i + 1 %}
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="sidenav-footer mx-3 mt-3 pt-3" id="stats">
+    <div class="card card-background shadow-none card-background-mask-info" id="sidenavCard">
+      <div class="full-background" style="background-image: url('view/image/curved-images/white-curved.jpeg')">
+      </div>
+      <div class="card-body text-left p-3 w-100">
+        <div
+          class="icon icon-shape icon-sm bg-white shadow text-center mb-3 d-flex align-items-center justify-content-center border-radius-md">
+          <i class="ni ni-diamond text-info text-gradient text-lg top-0" aria-hidden="true" id="sidenavCardIcon"></i>
+        </div>
+
+        <div class="progress-wrapper my-2">
+          <div class="progress-info">
+            <div class="progress-percentage d-flex justify-content-between">
+              <span class="text-sm font-weight-bold">{{ text_complete_status }}</span>
+              <span class="text-sm font-weight-bold">{{ complete_status }}%</span>
+            </div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="{{ complete_status }}" aria-valuemin="0"
+              aria-valuemax="100" style="width: {{ complete_status }}%;"></div>
+          </div>
+        </div>
+        <div class="progress-wrapper my-2">
+          <div class="progress-info">
+            <div class="progress-percentage d-flex justify-content-between">
+              <span class="text-sm font-weight-bold">{{ text_processing_status }}</span>
+              <span class="text-sm font-weight-bold">{{ processing_status }}%</span>
+            </div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-gradient-light" role="progressbar" aria-valuenow="{{ processing_status }}" aria-valuemin="0"
+              aria-valuemax="100" style="width: {{ processing_status }}%;"></div>
+          </div>
+        </div>
+        <div class="progress-wrapper my-2">
+          <div class="progress-info">
+            <div class="progress-percentage d-flex justify-content-between">
+              <span class="text-sm font-weight-bold">{{ text_other_status }}</span>
+              <span class="text-sm font-weight-bold">{{ other_status }}%</span>
+            </div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="{{ other_status }}" aria-valuemin="0"
+              aria-valuemax="100" style="width: {{ other_status }}%;"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</aside>

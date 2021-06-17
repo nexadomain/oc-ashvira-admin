@@ -1,5 +1,5 @@
 <?php
-class ControllerCommonLoginheaderAshvira extends Controller {
+class ControllerCommonHeaderAshvira extends Controller {
 	public function index() {
 		$data['title'] = $this->document->getTitle();
 
@@ -17,14 +17,6 @@ class ControllerCommonLoginheaderAshvira extends Controller {
 		$data['lang'] = $this->language->get('code');
 		$data['direction'] = $this->language->get('direction');
 
-		$this->load->language('common/header');
-
-		if (!isset($this->request->get['user_token']) || !isset($this->session->data['user_token']) || ($this->request->get['user_token'] != $this->session->data['user_token'])) {
-			$data['logged'] = '';
-
-			$data['home'] = $this->url->link('common/login', '', true);
-		}
-
-		return $this->load->view('common/loginheader_ashvira', $data);
+		return $this->load->view('common/header_ashvira', $data);
 	}
 }

@@ -1,0 +1,56 @@
+<div class="card h-100">
+  <div class="card-header pb-0">
+    <h6 class="text-info text-lg"><i class="fas fa-shopping-cart"></i> {{ heading_title }}</h6>
+  </div>
+  <div class="card-body px-0 pt-0 pb-2">
+    <div class="table-responsive p-0">
+      <table class="table align-items-center justify-content-center mb-0">
+        <thead>
+          <tr>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ column_order_id }}</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">{{ column_customer }}</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">{{ column_status }}</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">{{ column_date_added }}</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">{{ column_total }}</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">{{ column_action }}</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if orders %}
+            {% for order in orders %}
+              <tr>
+                <td class="align-right">
+                  <h6 class="ms-2 mb-0 text-xs font-weight-bold mb-0">{{ order.order_id }}</h6>
+                </td>
+                <td>
+                  <p class="font-weight-bold mb-0">{{ order.customer }}</p>
+                </td>
+                <td>
+                  <span class="text-sm font-weight-bold">{{ order.status }}</span>
+                </td>
+                <td class="align-middle text-center">
+                  <span class="text-xs font-weight-bold">{{ order.date_added }}</span>
+                </td>
+                <td class="align-middle text-center">
+                  <span class="text-lg font-weight-bold">{{ order.total }}</span>
+                </td>
+                <td class="align-middle">
+                  <a class="btn btn-link text-secondary mb-0" href="{{ order.view }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ button_view }}" data-container="body" data-animation="true">
+                    <i class="fas fa-eye text-lg"></i>
+                  </a>
+                </td>
+              </tr>
+            {% endfor %}
+          {% else %}
+            <tr>
+              <td>
+                <h6 class="ms-2 mb-0 text-sm font-weight-bold mb-0" colspan="6">{{ text_no_results }}</h6>
+              </td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="card h-100">
+  <div class="card-header pb-0">
+    <h6 class="text-info text-lg"><i class="fas fa-calendar-alt"></i> {{ heading_title }}</h6>
+  </div>
+  <div class="card-body p-3">
+    {% if activities %}
+      <div class="timeline timeline-one-side">
+      {% for activity in activities %}
+        <div class="timeline-block {% if not loop.last %}mb-3{% endif %}">
+          <span class="timeline-step">
+            {{ activity.ash_noti_icon }}
+          </span>
+          <div class="timeline-content">
+            <h6 class="text-dark text-sm mb-0">{{ activity.comment }}</h6>
+            <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">{{ activity.date_added }}</p>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+    {% else %}
+      <h6 class="text-warning text-center font-weight-bold mb-0">{{ text_no_results }}</h6>
+    {% endif %}
+  </div>
+</div>

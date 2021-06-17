@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-body p-3">
+    <div class="row">
+      <div class="col-8">
+        <div class="numbers">
+          <p class="text-sm mb-0 text-capitalize font-weight-bold">{{ heading_title }}</p>
+          <h5 class="font-weight-bolder mb-0">
+            {{ total }}
+            {% if percentage > 0 %} 
+              <i class="fas fa-caret-up"></i>              
+              <span class="text-success text-sm font-weight-bolder">+{{ percentage }}%</span>
+            {% elseif percentage < 0 %}
+              <i class="fas fa-caret-down"></i>
+              <span class="text-danger text-sm font-weight-bolder">{{ percentage }}%</span>
+            {% endif %}
+          </h5>
+        </div>
+      </div>
+      <div class="col-4 text-end">
+        <a href="{{ sale }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ text_view }}" data-container="body" data-animation="true">
+          <div class="icon icon-shape bg-gradient-info shadow text-center border-radius-md">
+            <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,184 @@
+<div class="card h-100">
+  <div class="card-header pb-0">
+	<div class="d-flex justify-content-between">
+	  <h6 class="text-info text-lg"><i class="fas fa-chart-bar"></i> {{ heading_title }}</h6>
+	  <div class="dropdownfdsf">
+		<a type="button" id="chartInfoDropdownMenu" data-bs-toggle="dropdown" aria-expanded="false">
+		  <i class="far fa-calendar-alt"></i>
+		  <i class="fas fa-caret-down me-2"></i>
+		</a>
+		<ul id="range" class="dropdown-menu dropdown-menu-end" aria-labelledby="chartInfoDropdownMenu">
+		  <li><a class="dropdown-item" href="day">{{ text_day }}</a></li>
+		  <li><a class="dropdown-item" href="week">{{ text_week }}</a></li>
+		  <li><a class="dropdown-item active bg-gradient-info" href="month">{{ text_month }}</a></li>
+		  <li><a class="dropdown-item" href="year">{{ text_year }}</a></li>
+		</ul>
+	  </div>
+	</div>
+  </div>
+  <div class="card-body p-3 border-top">
+	<div class="chart">
+	  <canvas id="chart-line" class="chart-canvas h-100" height="300px"></canvas>
+	</div>
+  </div>
+</div>
+
+<script src="view/javascript/ashvira_plugins/chartjs.min.js"></script>
+<script src="view/javascript/ashvira_plugins/Chart.extension.js"></script>
+
+<script>
+$('#range a').on('click', function(e) {
+	e.preventDefault();
+	
+	$(this).parent().parent().find('a').removeClass('active bg-gradient-info');
+	$(this).addClass('active bg-gradient-info');
+
+	$('#chart-line').remove();
+	$('.chart').html('<canvas id="chart-line" class="chart-canvas h-100" height="300px"></canvas>');
+
+	$.ajax({
+		type: 'get',
+		url: 'index.php?route=extension/dashboard/chart/chart&user_token={{ user_token }}&range=' + $(this).attr('href'),
+		dataType: 'json',
+		success: function(json) {
+		  if (typeof json['order'] == 'undefined') { return false; }
+
+		  let chartXaxesData  = [];
+		  let chartCustomerData  = [];
+		  let chartOrderData  = [];
+
+		  let mera = json['xaxis']; 
+		  mera.forEach((item, index)=>{
+			chartXaxesData[index] = item[1];
+		  });
+
+		  mera = json['customer']['data'];
+		  mera.forEach((item, index)=>{
+			chartCustomerData[index] = +item[1];
+		  });
+
+		  mera = json['order']['data'];
+		  mera.forEach((item, index)=>{
+			chartOrderData[index] = +item[1];
+		  });
+
+		  chartOrderMin = Math.min(...chartOrderData);
+		  chartCustomerMin = Math.min(...chartCustomerData);
+
+		  chartOrderMax = Math.max(...chartOrderData);
+		  chartCustomerMax = Math.max(...chartCustomerData);
+
+		  chartForGraph = {
+			"xAxes" : chartXaxesData,
+			"customer": { "label": json['customer']['label'], "data": chartCustomerData },
+			"order": {"label": json['order']['label'], "data": chartOrderData },
+			"min": Math.min(chartOrderMin, chartCustomerMin),
+			"max": Math.max(chartOrderMax, chartOrderMax)
+		  };
+		  
+		  var ctx2 = document.getElementById("chart-line").getContext("2d");
+
+		  var gradientStroke1 = ctx2.createLinearGradient(0, 230, 0, 50);
+
+		  gradientStroke1.addColorStop(1, 'rgba(203,12,159,0.2)');
+		  gradientStroke1.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+		  gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
+
+		  var gradientStroke2 = ctx2.createLinearGradient(0, 230, 0, 50);
+
+		  gradientStroke2.addColorStop(1, 'rgba(20,23,39,0.2)');
+		  gradientStroke2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+		  gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
+
+		  new Chart(ctx2, {
+			type: "line",
+			data: {
+				labels: chartForGraph['xAxes'],
+				datasets: [{
+					label: chartForGraph['customer']['label'],
+					tension: 0.4,
+					borderWidth: 0,
+					pointRadius: 0,
+					borderColor: "#cb0c9f",
+					borderWidth: 3,
+					backgroundColor: gradientStroke1,
+					data: chartForGraph['customer']['data'],
+					maxBarThickness: 6
+
+				},
+				{
+					label: chartForGraph['order']['label'],
+					tension: 0.4,
+					borderWidth: 0,
+					pointRadius: 0,
+					borderColor: "#3A416F",
+					borderWidth: 3,
+					backgroundColor: gradientStroke2,
+					data: chartForGraph['order']['data'],
+					maxBarThickness: 6
+
+				},
+				],
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				legend: {
+					display: false,
+				},
+				tooltips: {
+					enabled: true,
+					mode: "index",
+					intersect: false,
+				},
+				scales: {
+					yAxes: [{
+							gridLines: {
+							borderDash: [2],
+							borderDashOffset: [2],
+							color: '#dee2e6',
+							zeroLineColor: '#dee2e6',
+							zeroLineWidth: 1,
+							zeroLineBorderDash: [2],
+							drawBorder: false,
+						},
+						ticks: {
+							suggestedMin: 0,
+							suggestedMax: 3,
+							beginAtZero: true,
+							padding: 10,
+							fontSize: 11,
+							fontColor: '#adb5bd',
+							lineHeight: 3,
+							fontStyle: 'normal',
+							fontFamily: "Open Sans",
+						},
+					},],
+					xAxes: [{
+							gridLines: {
+							zeroLineColor: 'rgba(0,0,0,0)',
+							display: false,
+						},
+						ticks: {
+							padding: 10,
+							fontSize: 11,
+							fontColor: '#adb5bd',
+							lineHeight: 3,
+							fontStyle: 'normal',
+							fontFamily: "Open Sans",
+						},
+					},],
+				},
+			},
+			});
+		},
+        error: function(xhr, ajaxOptions, thrownError) {
+           alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        }
+	});
+
+
+});
+
+$('#range a.active').trigger('click');
+</script>

@@ -1,0 +1,118 @@
+<main class="main-content mt-1 border-radius-lg" id="content">
+<!-- Navbar -->
+<nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
+    navbar-scroll="true">
+  <div class="container-fluid py-1 px-3">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+        {% set heading_title = heading_title %}
+        {% for breadcrumb in breadcrumbs %}
+        <li class="breadcrumb-item text-sm {% if loop.last %} text-dark active {% endif %}"><a class="{% if not loop.last %} opacity-5 text-dark {% endif %}" href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% set heading_title = breadcrumb.text %}
+        {% endfor %}
+      </ol>
+      <h6 class="font-weight-bolder mb-0">{{ heading_title }}</h6>
+    </nav>
+    <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+	  {% if logged %}
+      <div class="ms-md-auto pe-md-3 d-flex align-items-center dropdown">
+        <a href="javascript:;" class="nav-link text-body font-weight-bold p-0 d-flex align-items-center" id="dropdownMenuButton"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="{{ image }}" alt="{{ firstname }} {{ lastname }}" title="{{ username }}" id="user-profile" class="avatar avatar-sm shadow me-2">
+          <span class="d-sm-inline d-none font-weight-bold">{{ firstname }} {{ lastname }} &nbsp;</span>
+          <i class="fas fa-caret-down me-1"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-start px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+          <li class="mb-2">
+            <a class="dropdown-item border-radius-md" href="{{ profile }}">
+              <div class="d-flex py-1">
+                <div class="avatar avatar-sm bg-gradient-secondary me-3 my-auto">
+                  <i class="far fa-user-circle fa-fw"></i>
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                  <h6 class="text-sm font-weight-normal mb-1">{{ text_profile }}</h6>
+                </div>
+              </div>
+            </a>
+          </li>
+          <hr class="horizontal dark mt-0">
+          <h6 class="dropdown-header text-sm font-weight-bold">{{ text_store }}</h6>
+        {% for store in stores %}
+          <li>
+            <a class="dropdown-item border-radius-md" href="{{ store.href }}" target="_blank">
+              <div class="d-flex py-1">
+                <div class="d-flex flex-column justify-content-center">
+                  <h6 class="text-sm font-weight-normal mb-1">{{ store.name }}</h6>
+                </div>
+              </div>
+            </a>
+          </li>
+        {% endfor %}
+          <hr class="horizontal dark mt-0">
+          <h6 class="dropdown-header text-sm font-weight-bold">{{ text_help }}</h6>
+          <li>
+            <a class="dropdown-item border-radius-md" href="https://www.opencart.com" target="_blank">
+              <div class="d-flex py-1">
+                <div class="me-3 my-auto">
+                  <i class="fab fa-opencart"></i>
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                  <h6 class="text-sm font-weight-normal mb-1">{{ text_homepage }}</h6>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item border-radius-md" href="http://docs.opencart.com" target="_blank">
+              <div class="d-flex py-1">
+                <div class="me-3 my-auto">
+                  <i class="far fa-file-alt"></i>
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                  <h6 class="text-sm font-weight-normal mb-1">{{ text_documentation }}</h6>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item border-radius-md" href="https://forum.opencart.com" target="_blank">
+              <div class="d-flex py-1">
+                <div class="me-3 my-auto">
+                  <i class="far fa-comments"></i>
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                  <h6 class="text-sm font-weight-normal mb-1">{{ text_support }}</h6>
+                </div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <ul class="navbar-nav  justify-content-end">
+        <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+            <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+            <div class="sidenav-toggler-inner">
+                <i class="sidenav-toggler-line"></i>
+                <i class="sidenav-toggler-line"></i>
+                <i class="sidenav-toggler-line"></i>
+            </div>
+            </a>
+        </li>
+        <li class="nav-item px-3 d-flex align-items-center">
+          <a href="javascript:;" class="nav-link text-body p-0" id="button-developer" title="{{ button_developer  }}" data-loading-text="{{ text_loading }}" data-bs-toggle="tooltip" data-bs-placement="top" data-container="body" data-animation="true" >
+            <i class="fas fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+          </a>
+        </li>
+        <li class="nav-item pe-2 d-flex align-items-center">
+          <a href="{{ logout }}" class="nav-link text-body font-weight-bold px-0">
+            <i class="fas fa-sign-out-alt cursor-pointer"></i>
+            <span class="d-sm-inline d-none">{{ text_logout }}</span>
+          </a>
+        </li>
+      </ul>
+	  {% endif %}
+    </div>
+  </div>
+</nav>
+<!-- End Navbar -->
+<div class="container-fluid py-4">

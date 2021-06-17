@@ -1,0 +1,118 @@
+{{ header }}{{ column_left }}{{ navbar }}
+
+{% if success %}
+<div class="alert alert-success text-light alert-dismissible fade show" role="alert">
+  <span class="alert-icon"><i class="fas fa-check-circle"></i></span>
+  <span class="alert-text">{{ success }}</span>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endif %}
+{% if error_warning %}
+<div class="alert alert-danger text-light alert-dismissible fade show" role="alert">
+  <span class="alert-icon"><i class="fas fa-exclamation-circle"></i></span>
+  <span class="alert-text">{{ error_warning }}</span>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endif %}
+
+<div class="card">
+  <div class="card-header pb-0">
+    <div class="d-flex justify-content-between">
+      <h6 class="text-info text-lg"><i class="fas fa-pencil-alt"></i> {{ text_edit }}</h6>
+      <div class="right-content">
+        <button type="submit" form="form-user" data-toggle="tooltip" title="{{ button_save }}" class="btn bg-gradient-info btn-sm px-3 me-1"><i class="fas fa-save text-lg"></i></button>
+        <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn bg-gradient-default btn-sm px-3 ms-1"><i class="fas fa-reply text-lg"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="card-body p-3">
+    <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-user">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="form-control-label" for="input-username">{{ entry_username }}</label>
+            <input type="text" name="username" value="{{ username }}" placeholder="{{ entry_username }}" id="input-username" class="form-control {% if error_username %} is-invalid {% endif %}">
+            {% if error_username %}
+              <div class="text-danger">{{ error_username }}</div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group ">
+            <label class="form-control-label" for="input-email">{{ entry_email }}</label>
+            <input type="email" name="email" value="{{ email }}" placeholder="{{ entry_email }}" id="input-email" class="form-control {% if error_email %} is-invalid {% endif %}">
+            {% if error_email %}
+              <div class="text-danger">{{ error_email }}</div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="form-control-label" for="input-firstname">{{ entry_firstname }}</label>
+            <input type="text" name="firstname" value="{{ firstname }}" placeholder="{{ entry_firstname }}" id="input-firstname" class="form-control {% if error_firstname %} is-invalid {% endif %}">
+            {% if error_firstname %}
+              <div class="text-danger">{{ error_firstname }}</div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="form-control-label" for="input-lastname">{{ entry_lastname }}</label>
+            <input type="text" name="lastname" value="{{ lastname }}" placeholder="{{ entry_lastname }}" id="input-lastname" class="form-control {% if error_lastname %} is-invalid {% endif %}">
+            {% if error_lastname %}
+              <div class="text-danger">{{ error_lastname }}</div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="form-control-label" for="input-password">{{ entry_password }}</label>
+            <input type="password" name="password" value="{{ password }}" placeholder="{{ entry_password }}" id="input-password" class="form-control {% if error_password %} is-invalid {% endif %}" autocomplete="off">
+            {% if error_password %}
+              <div class="text-danger">{{ error_password }}</div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="form-control-label" for="input-confirm">{{ entry_confirm }}</label>
+            <input type="password" name="confirm" value="{{ confirm }}" placeholder="{{ entry_confirm }}" id="input-confirm" class="form-control {% if error_confirm %} is-invalid {% endif %}">
+            {% if error_confirm %}
+              <div class="text-danger">{{ error_confirm }}</div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label class="form-control-label" for="input-image">{{ entry_image }}</label>
+            <div class="avatar avatar-xl position-relative">
+              <img src="{{ thumb }}" alt="" title="" data-placeholder="{{ placeholder }}" class="w-100 border-radius-lg shadow-sm">
+              <button type="button" id="button-image" class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 start-0 mb-n2 me-n2">
+                <i class="fas fa-pen top-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Image"></i>
+              </button>
+              <button type="button" id="button-clear" class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n2 me-n2">
+                <i class="fas fa-trash-alt top-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Image"></i>
+              </button>
+              <input type="hidden" name="image" value="{{ image }}" id="input-image" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" form="form-user" class="btn bg-gradient-info"><i class="fas fa-save"></i> {{ button_save }}</button>
+      <a href="{{ cancel }}" class="btn btn-outline-danger"><i class="fas fa-reply"></i> {{ button_cancel }}</a>
+    </form>
+
+  </div>
+</div>
+
+{{ footer }}

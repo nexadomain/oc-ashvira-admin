@@ -1,5 +1,4 @@
 {{ header }}
-<body class="g-sidenav-show bg-gray-100">
   <section class="mb-3">
     <div class="page-header align-items-start section-height-50 pt-5 pb-11 m-3 border-radius-lg"
       style="background-image: url('view/image/curved-images/curved14.jpg');">
@@ -18,12 +17,12 @@
         <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
           <div class="card z-index-0">
             <div class="card-header text-center pt-4 mb-n4">
-              <h5><i class="fa fa-repeat"></i> {{ heading_title }}</h5>
+              <h5><i class="fas fa-redo-alt"></i> {{ heading_title }}</h5>
             </div>
             <div class="card-body">
               {% if error_warning %}
               <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <span class="alert-icon"><i class="fa fa-exclamation-circle"></i></span>
+                <span class="alert-icon"><i class="fas fa-exclamation-circle"></i></span>
                 <span class="alert-text">{{ error_warning }}</span>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
@@ -35,10 +34,10 @@
                   <input type="text" name="email" value="{{ email }}" placeholder="{{ entry_email }}" id="input-email" class="form-control" />
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2"><i class="fa fa-check"></i> {{ button_reset }}</button>
+                  <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2"><i class="fas fa-check"></i> {{ button_reset }}</button>
                 </div>
                 <p class="text-sm mt-3 mb-0">Login? <a href="{{ cancel }}"
-                    class="text-dark font-weight-bolder"><i class="fa fa-reply"></i> {{ button_cancel }}</a></p>
+                    class="text-dark font-weight-bolder"><i class="fas fa-reply"></i> {{ button_cancel }}</a></p>
               </form>
             </div>
           </div>
@@ -60,24 +59,5 @@
       </div>
     </div>
   </footer>
-  <!-- -------- END FOOTER - COPYRIGHT ------- -->
-  <!--   Core JS Files   -->
-  <script src="view/javascript/core/popper.min.js"></script>
-  <script src="view/javascript/core/bootstrap.min.js"></script>
-  <script src="view/javascript/plugins/smooth-scrollbar.min.js"></script>
-  <!-- Control Center for Ashvira Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="view/javascript/ashvira-ui-dashboard.min.js?v=0.0.1"></script>
-  <script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-      var options = {
-        damping: '0.5'
-      }
-      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
-  </script>
-  <!-- Github buttons -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
-
 </html>
